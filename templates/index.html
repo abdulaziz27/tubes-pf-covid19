@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="main">
+   <div class="data">
+        <div class="heading">Covid-19 <span class="heading-2">World</span> Statistics</div>
+        <!-- <div class="heading-2">World</div> -->
+        <!-- <div class="rare">Rate NFTs</div>
+        <p class="para">ASYUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU </p> -->
+        {% for i in new_world_data %}
+        <div class="numbers">
+            <div class="counter">
+                <div class="counter-1">
+                    <h1 class="count auction" data-target="{{ i.total_cases }}">0</h1>
+                    <!-- <span>K+</span> -->
+                </div>
+                <p>Total Cases</p>
+            </div>
+            <div class="counter">
+                <div class="counter-1">
+                    <h1 class="count auction" data-target="{{ i.total_recovered }}">0</h1>
+                    <!-- <span>K+</span> -->
+                </div>
+                <p>Total Recovered</p>
+            </div>
+        </div>
+        <div class="numbers">
+            <div class="counter">
+                <div class="counter-1">
+                    <h1 style="color: #FCE22A;" class="count auction" data-target="{{ i.active_cases}}">0</h1>
+                    <!-- <span>K+</span> -->
+                </div>
+                <p>Active Cases</p>
+            </div>
+            <div class="counter">
+                <div class="counter-1">
+                    <h1 style="color: red;" class="count auction" data-target="{{ i.total_deaths}}">0</h1>
+                    <!-- <span>K+</span> -->
+                </div>
+                <p>Total Deaths</p>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="main-buttons">
+            <div class="login-button"><a href="{{ url_for('statistics') }}" class="button-link-login">See more</a></div>
+            <!-- <div class="wallet-button"><a href="#" class="button-link-wallet">About Us</a></div> -->
+        </div>
+    </div>
+    <div class="image">
+        <img src="/static/assets/covid.jpg" alt="">
+    </div>
+</div>
+
+{% endblock %}

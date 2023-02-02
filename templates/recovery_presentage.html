@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="section">
+    <table class="content-table">
+        <thead>
+            <tr>
+            <th>No</th>
+            <th>Country</th>
+            <th>Total Cases</th>
+            <th>Active Cases</th>
+            <th>Recovered</th>
+            <th>Deaths</th>
+            <th>Recovery (%)</th>
+            <th>Population</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sortByRecoveryP[:5] %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ row.country }}</td>
+                <td>{{ row.total_case }}</td>
+                <td>{{ row.active_cases }}</td>
+                <td>{{ row.total_recovered }}</td>
+                <td>{{ row.total_death }}</td>
+                <td>{{ row.recovery_presentage }}%</td>
+                <td>{{ row.population }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+{% endblock %}

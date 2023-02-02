@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="wrapper">
+        <div class="container">
+            <h3>Country Stats</h3>
+            <table class="table table-striped w-auto">
+                <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Case</th>
+                    <th scope="col">Recovered</th>
+                    <th scope="col">Deaths</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for row in country_stats %}
+                    <tr>
+                        {% for cell in country_stats %}
+                        <td>{{ loop.index }}</td>
+                        <td>{{ cell.country }}</td>
+                        <td>{{ cell.total_case }}</td>
+                        <td>{{ cell.recovered }}</td>
+                        <td>{{ cell.total_death }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <h3>Countries Stats</h3>
+            <table class="content-table">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Negara</th>
+                    <th>Benua</th>
+                    <th>Kasus</th>
+                    <th>Positif</th>
+                    <th>Sembuh</th>
+                    <th>Meninggal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in pagination_data %}
+                  <tr>
+                      <td>{{ loop.index + (page - 1) * per_page }}</td>
+                      <td>{{ row.country }}</td>
+                      <td>{{ row.continent }}</td>
+                      <td>{{ row.total_case }}</td>
+                      <td>{{ row.active }}</td>
+                      <td>{{ row.recovered }}</td>
+                      <td>{{ row.total_death }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+              {{ pagination.info }}
+              {{ pagination.links }}
+        </div>
+        <div class="container">
+            <h3>Global Stats</h3>
+            <table class="table table-striped w-auto">
+                <thead>
+                <tr>
+                    <th scope="col">Case</th>
+                    <th scope="col">Recovered</th>
+                    <th scope="col">Deaths</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for row in all_stats %}
+                    <tr>
+                        <td>{{ row.total_case }} </td>
+                        <td>{{ row.recovered }}</td>
+                        <td>{{ row.total_death }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
