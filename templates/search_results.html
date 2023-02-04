@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="main">
+   <div class="data">
+        {% if search_results %}
+            {% for result in search_results %}
+            <div class="heading"> <span class="heading-2">{{ result.country }}</span> Statistics</div>
+            <!-- <div class="heading-2">World</div> -->
+            <!-- <div class="rare">Rate NFTs</div>
+            <p class="para">ASYUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU </p> -->
+            
+            <div class="numbers">
+                <div class="counter">
+                    <div class="counter-1">
+                        <h1 class="count auction" data-target="{{ result.total_case }}">0</h1>
+                        <!-- <span>K+</span> -->
+                    </div>
+                    <p>Total Cases</p>
+                </div>
+                <div class="counter">
+                    <div class="counter-1">
+                        <h1 class="count auction" data-target="{{ result.total_recovered }}">0</h1>
+                        <!-- <span>K+</span> -->
+                    </div>
+                    <p>Total Recovered</p>
+                </div>
+            </div>
+            <div class="numbers">
+                <div class="counter">
+                    <div class="counter-1">
+                        <h1 style="color: #FCE22A;" class="count auction" data-target="{{ result.active_cases}}">0</h1>
+                        <!-- <span>K+</span> -->
+                    </div>
+                    <p>Active Cases</p>
+                </div>
+                <div class="counter">
+                    <div class="counter-1">
+                        <h1 style="color: red;" class="count auction" data-target="{{ result.total_death}}">0</h1>
+                        <!-- <span>K+</span> -->
+                    </div>
+                    <p>Total Deaths</p>
+                </div>
+                <div class="counter">
+                    <div class="counter-1">
+                        <h1 style="color: red;" >{{ result.cfr }}%</h1>
+                        <!-- <span>K+</span> -->
+                    </div>
+                    <p>Case Fatality Rate</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="heading">OOPS! Not Found, Try Again!</div>
+        {% endif %}
+        <div class="main-buttons">
+            <div class="login-button"><a href="{{ url_for('statistics') }}" class="button-link-login">See More</a></div>
+            <!-- <div class="wallet-button"><a href="#" class="button-link-wallet">About Us</a></div> -->
+        </div>
+    </div>
+    <div class="image">
+        <img src="/static/assets/covid.jpg" alt="">
+    </div>
+</div>
+
+{% endblock %}

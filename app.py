@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify
 from flask_paginate import Pagination, get_page_args
 
 app = Flask(__name__)
@@ -59,9 +59,15 @@ for item in world_data:
     new_world_data.append(data)
 
 
-@app.route("/search", methods = ['POST', 'GET'])
-def search():  
-    return render_template('navbar.html', title = 'Search Data')
+@app.route("/search", methods=["POST"])
+def search():
+  search_term = request.form.get("search_term")
+  search_results = []
+  for item in new_stats_list:
+    if search_term in item.values():
+      search_results.append(item)
+  return render_template("search_results.html", search_results=search_results, title= 'Search Data')
+
 
 @app.route("/")
 def home():
@@ -73,7 +79,16 @@ def about():
 
 @app.route("/statistics")
 def statistics():
-    return render_template('statistics.html', title = "Statistics", stats_list = new_stats_list)
+
+    def get_pagination(offset=0, per_page=10):
+        return new_stats_list[offset: offset+per_page]
+
+    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    total = len(new_stats_list)
+    pagination_data = get_pagination(offset=offset, per_page=per_page)
+    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+
+    return render_template('statistics.html', title = "Statistics", new_stats_list = new_stats_list, pagination_data=pagination_data,page=page,per_page=per_page,pagination=pagination)
 
 @app.route("/infection-risk")
 def infection_risk():

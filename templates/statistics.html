@@ -15,9 +15,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for row in stats_list[:10] %}
+                {% for row in pagination_data %}
                 <tr>
-                    <td>{{ loop.index }}</td>
+                    <td>{{ loop.index + (page - 1) * per_page }}</td>
                     <td>{{ row.country }}</td>
                     <td>{{ row.total_case }}</td>
                     <td>{{ row.active_cases }}</td>
@@ -28,6 +28,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        {{ pagination.links }}
     </section>
 
 {% endblock %}
