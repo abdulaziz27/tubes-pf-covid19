@@ -26,9 +26,9 @@ new_stats_list = []
 for item in stats_data:
     stats = {
         'country': item['Country'],
-        'total_case': item['TotalCases'],
+        'total_cases': item['TotalCases'],
         #'new_cases': item['NewCases'],
-        'total_death': item['TotalDeaths'],
+        'total_deaths': item['TotalDeaths'],
         #'new_death': item['NewDeaths'],
         'total_recovered': item['TotalRecovered'],
         #'new_recovered': item['NewRecovered'],
@@ -44,6 +44,9 @@ for item in stats_data:
 sortByCFR = sorted(new_stats_list, key=lambda x: x['cfr'], reverse=True)
 sortByRecoveryP = sorted(new_stats_list, key=lambda x: x['recovery_presentage'], reverse=True)
 sortByInfectionRisk = sorted(new_stats_list, key=lambda x: x['infection_risk'], reverse=True)
+
+# Menggunakan sorted() untuk mengurutkan data berdasarkan total kematian terendah dan total recovered terbanyak
+sorted_data = sorted(new_stats_list, key=lambda x: (x["total_deaths"], x["total_recovered"]), reverse=True)
 
 new_world_data = []
 for item in world_data:
@@ -75,7 +78,7 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template('about.html', title = "About")
+    return render_template('about.html', title = "About Us")
 
 @app.route("/statistics")
 def statistics():

@@ -12,15 +12,35 @@
   margin-right: 0px;
   margin-left: 0px;
   padding: auto;
+  
 }
 
 .pagination{
   margin-top: 7px;
   justify-content: center;
+  
 }
 
 .pagination-page-info{
   text-align: center;
+  
+}
+
+.pagination > li > a
+{
+    background-color: white;
+    color: #009879;
+}
+
+.pagination > li.active > a
+{
+    background-color: black;
+    color: #009879;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #009879 ;
+  border-color: #009879;
 }
 
 /* Home */
@@ -46,7 +66,7 @@
 
 .heading{color: #231B4F;}
 .heading-2{
-  background: linear-gradient(85deg, #654EBF 8%, #A05BAB 78%);
+  background: linear-gradient(85deg, #231B4F 8%, #595F69 78%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -78,7 +98,7 @@
   width: 9rem;
   height: 3.1rem;
   border-radius: 3rem;
-  border: 2px solid #EAE1F1;
+  border: 2px solid #C1C7D2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,7 +109,7 @@
 }
 
 .button-link-login{
-  color: #4C621D;
+  color: #595F69;
   font-size: 1.05rem;
   
 }
@@ -99,8 +119,8 @@
   margin-left: 1rem;
 }
 .login-button:hover{
-  background-color: #6A4ED5;
-  box-shadow: 2px 10px 40px 1px rgba(106, 78, 213, 0.3);
+  background-color: #595F69;
+  box-shadow: 2px 10px 40px 1px rgba(133, 131, 137, 0.3);
   transform: scale(1.1, 1.1);
 }
 .login-button:hover .button-link-login{
@@ -318,7 +338,7 @@
 }
 
 .content-table thead tr {
-  background-color: #171c24;
+  background-color: #009879;
   color: #ffffff;
   text-align: left;
   font-weight: bold;
