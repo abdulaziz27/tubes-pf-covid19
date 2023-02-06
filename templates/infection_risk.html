@@ -16,11 +16,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for row in sortByInfectionRisk[:5] %}
+            {% for row in sort_by_infection_risk[:5] %}
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ row.country }}</td>
-                <td>{{ row.total_case }}</td>
+                <td>{{ row.total_cases }}</td>
                 <td>{{ row.active_cases }}</td>
                 <td>{{ row.total_recovered }}</td>
                 <td>{{ row.total_deaths }}</td>
