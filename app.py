@@ -40,6 +40,7 @@ new_stats_list = list(
         )
     )
 )
+print(new_stats_list)
 
 # Sort new_stats_list using sorted
 sort_by_cfr = sorted(new_stats_list, key=lambda x: x['cfr'], reverse=True)
@@ -83,7 +84,7 @@ def statistics():
 
     def get_pagination(offset=0, per_page=10):
         return new_stats_list[offset: offset+per_page]
-        
+
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
     total = len(new_stats_list)
     pagination_data = get_pagination(offset=offset, per_page=per_page)
